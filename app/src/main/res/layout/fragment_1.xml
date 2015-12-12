@@ -20,14 +20,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This app is to keep a record of the amount spent that was shared within multiple individuals, e.g. collective resturant bill"
+        android:text="This app was supposed to keep a record of the amount spent that is shared within multiple individuals, e.g. collective resturant bill"
         android:id="@+id/textView"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textColor="#010101"
         android:layout_marginTop="90dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:layout_below="@+id/textView2"
         android:gravity="center"/>
 
@@ -35,13 +35,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You can enter the name of the people among which the bill will be shared in the 'Add People' and enter the amount in the 'Add Amount' "
+        android:text="However, due to the fact that the android studio I was working on decided to make things more difficult for me by first crashing and then refusing to work with any device or start the emulator, I had to comment out much of the code and delete the buttons. So now it only takes input from a fragment, adds the name to the database and displays it to the other fragment... "
         android:id="@+id/textView3"
-        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:textSize="17sp"
         android:textColor="#010101"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:paddingTop="30dp"
         android:gravity="center"/>
 
    <ImageView

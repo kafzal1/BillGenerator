@@ -1,10 +1,12 @@
 package com.example.acer.billgenerator;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,26 +17,31 @@ import android.widget.Toast;
 public class TabFragment3 extends Fragment{
 
     TextView updateText;
+    EditText name;
+    TextView deleteButton;
+    String userData;
+    // private OnFragmentInteractionListener mListener;
     final static String DATA_RECEIVE = "data_receive";
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_3, null);
 
         updateText=(TextView)rootView.findViewById(R.id.amountDisplay);
-       // String strtext=getArguments().getString("value");
-       /* if(strtext.equals(""))
-        {
-            Toast.makeText(this, "Got it!", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+      //  name=(EditText)rootView.findViewById(R.id.enterAmountText);
+        deleteButton=(TextView)rootView.findViewById(R.id.deleteAmount);
 
-        }*/
-        //updateText.setText("komal");
-      /*  Bundle args = getArguments();
-        if (args != null) {
-            updateText.setText(args.getString(DATA_RECEIVE));
-        }*/
+
+      /*  deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userData = name.getText().toString();
+                //  onButtonPressed(userData);
+            }
+        });*/
+
 
         MainActivity activity = (MainActivity) getActivity();
         String myData = activity.getMyData();
@@ -43,31 +50,44 @@ public class TabFragment3 extends Fragment{
             updateText.setText("no database available");
         }
         else
-        {updateText.setText(myData);}
+        {updateText.setText("");
+            updateText.setText(myData);}
 
+        MainActivity activity1 = (MainActivity) getActivity();
+        String myData1 = activity1.getMyData1().toString();
+        deleteButton.setText(myData1);
+
+       // updateText.setText(" ");
         return rootView;
     }
-
-    public void updateTextField(){
-       // updateText.setText();
+/*
+    public void onButtonPressed(String userContent) {
+        // if (mListener != null)
+        {
+            mListener.onFragmentInteraction(userContent);
+        }
     }
 
-   /* @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Bundle bundle = getArguments();
-        String value = bundle.getString(DATA_RECEIVE);
-        Toast.makeText(getActivity(),value,Toast.LENGTH_SHORT).show();
-    }*/
-  /* @Override
-    public void onStart() {
-        super.onStart();
-        Bundle args = getArguments();
-      //  if (args != null) {
-            updateText.setText(args.getString("value"));
 
 
-    }*/
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(String userContent);
+    }
+*/
 
 }

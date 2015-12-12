@@ -26,8 +26,7 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
     EditText nameEditText, deleteEditText;
     TextView displayNames;
     String nowes;
-    String contactName;
-    String amountdollar;
+    static int totals=0;
     ActionBar.Tab tab1, tab2, tab3;
 
     Fragment fragment1= new TabFragment1();
@@ -59,7 +58,7 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
         actionBar.addTab(tab2);
         actionBar.addTab(tab3);
         addContactButton=(Button)findViewById(R.id.addButton);
-        deleteContactButton=(Button)findViewById(R.id.deleteButton);
+       // deleteContactButton=(Button)findViewById(R.id.deleteButton);
         nameEditText=(EditText)findViewById(R.id.enterName);
         deleteEditText=(EditText)findViewById(R.id.deleteName);
         displayNames=(TextView)findViewById(R.id.amountDisplay);
@@ -73,13 +72,20 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
     @Override
     public void onFragmentInteraction(String userContent, String amountContent) {
         nowes=userContent;
-        amountdollar=amountContent;
+        int foo=0;
+        try {
+            foo = Integer.parseInt(amountContent);
+        } catch (NumberFormatException e) {
+            foo=0;
+        }
+        // foo = Integer.parseInt(amountContent);
+        totals= totals+foo;
        // Toast.makeText(this, nowes+" Got it!", Toast.LENGTH_SHORT).show();
 
         if(contactsDB==null) {
             contactsDB = this.openOrCreateDatabase("MyContacts.db", MODE_PRIVATE, null);
             contactsDB.execSQL("CREATE TABLE IF NOT EXISTS contacts " +
-                    "(id integer primary key, name VARCHAR, email VARCHAR);");
+                    "(id integer primary key, name VARCHAR);");
            // contactName = "komal";
             File database = getApplicationContext().getDatabasePath("MyContacts.db");
 
@@ -90,12 +96,12 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
                 Toast.makeText(this, "Database Missing", Toast.LENGTH_SHORT).show();
             }
 
-            contactsDB.execSQL("INSERT INTO contacts (name, email) VALUES ('" +
-                    nowes + "', '" + amountdollar + "');");
+            contactsDB.execSQL("INSERT INTO contacts (name) VALUES ('" +
+                    userContent + "');");
         }
         else {
-            contactsDB.execSQL("INSERT INTO contacts (name, email) VALUES ('" +
-                    nowes + "', '" + amountdollar + "');");
+            contactsDB.execSQL("INSERT INTO contacts (name) VALUES ('" +
+                    nowes + "');");
         }
 
     }
@@ -105,11 +111,11 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
 
         if(contactsDB!=null) {
             Cursor cursor = contactsDB.rawQuery("SELECT * FROM contacts", null);
+          //  contactsDB.execSQL("DELETE * FROM contacts");
 
             // Get the index for the column name provided
             int idColumn = cursor.getColumnIndex("id");
             int nameColumn = cursor.getColumnIndex("name");
-            int emailColumn = cursor.getColumnIndex("email");
 
             // Move to the first row of results
             cursor.moveToFirst();
@@ -117,21 +123,21 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
             String contactList = "";
 
             // Verify that we have results
-            if(cursor != null && (cursor.getCount() > 0)){
+            if (cursor != null && (cursor.getCount() > 0)) {
 
-                do{
+                do {
                     // Get the results and store them in a String
                     String id = cursor.getString(idColumn);
                     String name = cursor.getString(nameColumn);
-                    String email = cursor.getString(emailColumn);
 
-                    contactList = contactList + id + " : " + name + " : " + email + "\n";
+                    contactList = contactList + id + " : " + name + "\n";
 
                     // Keep getting results as long as they exist
-                }while(cursor.moveToNext());
-                
+                } while (cursor.moveToNext());
+
                 // displayNames.setText(contactList);
                 cursor.close();
+               // contactList = "";
                 return contactList;
 
 
@@ -139,15 +145,31 @@ public class MainActivity extends Activity implements TabFragment2.OnFragmentInt
             } else {
 
                 Toast.makeText(this, "No Results to Show", Toast.LENGTH_SHORT).show();
+                contactList = "";
                 // displayNames.setText("Yellow");
                 return "No database available";
 
             }
            // cursor.close();
         }
-        return "no db";
+        return "No database available";
        // cursor.close();
     }
+
+    public String getMyData1()
+    {
+        String foo= ""+totals;
+        return foo;
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        contactsDB.close();
+
+        super.onDestroy();
+    }
+
 }
 
 

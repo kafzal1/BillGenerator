@@ -4,93 +4,54 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Amount to be Added"
-        android:id="@+id/textView"
-        android:textSize="20sp"
-        android:textColor="#010101"
-        android:layout_marginTop="90dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:paddingTop="20dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD"
-        android:id="@+id/addAmount"
-        android:onClick="addRecord"
-        android:clickable="false"
-        android:layout_below="@+id/enterAmountText"
-        android:layout_alignParentStart="true" />
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/enterAmountText"
-        android:ellipsize="start"
-        android:gravity="center"
-        android:background="@drawable/edit"
-        android:hint="e.g. 200$"
-        android:breakStrategy="high_quality"
 
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter the amount to be distributed among the list of people: "
+        android:text="Displays the total amount and the names entered in the database: "
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
         android:textColor="#010101"
         android:paddingTop="22dp"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp"
+        android:gravity="center"/>
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter amount to be Delete"
-        android:id="@+id/textView3"
-        android:textSize="20sp"
-        android:textColor="#010101"
-        android:layout_below="@+id/addAmount"
+        android:text="Total Amount: "
+        android:id="@+id/deleteAmount1"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
-        android:paddingTop="30dp" />
+        android:textColor="#060606"
+        android:textSize="24dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/deleteAmountText"
-        android:ellipsize="start"
-        android:gravity="center"
-        android:background="@drawable/edit"
-        android:hint="e.g. 100$"
-        android:breakStrategy="high_quality"
-
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true" />
-
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DELETE"
         android:id="@+id/deleteAmount"
-        android:onClick="addRecord"
-        android:clickable="false"
-        android:layout_below="@+id/deleteAmountText"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/deleteAmount1"
+        android:layout_alignParentStart="true"
+        android:textColor="#060606"
+        android:textSize="24dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/amountDisplay"
-        android:layout_below="@+id/deleteAmount" />
+        android:layout_below="@+id/deleteAmount"
+        android:textColor="#060606"
+        android:textSize="24dp"/>
 
 </RelativeLayout>

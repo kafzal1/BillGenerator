@@ -23,7 +23,7 @@
         android:id="@+id/addButton"
         android:onClick="addRecord"
         android:clickable="true"
-        android:layout_below="@+id/enterName"
+        android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
 
@@ -44,25 +44,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="You Can add or delete the names of people to the database by inserting their names in the following fields respectively: "
+        android:text="You Can add names of people to the database and the amount by inserting their names in the following fields respectively: "
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
         android:textColor="#010101"
         android:paddingTop="22dp"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter name to Delete"
+        android:text="Enter the amount"
         android:id="@+id/textView3"
         android:textSize="20sp"
         android:textColor="#010101"
-        android:layout_below="@+id/addButton"
-        android:layout_alignParentStart="true"
-        android:paddingTop="30dp" />
+        android:paddingTop="30dp"
+        android:layout_below="@+id/enterName"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -71,29 +72,20 @@
         android:ellipsize="start"
         android:gravity="center"
         android:background="@drawable/edit"
-        android:hint="e.g. Doctor Who"
+        android:hint="e.g. 23"
         android:breakStrategy="high_quality"
 
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DELETE"
-        android:id="@+id/deleteButton"
-        android:onClick="addRecord"
-        android:clickable="false"
-        android:layout_below="@+id/deleteName"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/enterName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="56dp" />
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:src="@drawable/redworld"
-        android:paddingTop="25dp"/>
-
+        android:id="@+id/imageView"
+        android:src="@drawable/pages"
+        android:layout_below="@+id/addButton"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
